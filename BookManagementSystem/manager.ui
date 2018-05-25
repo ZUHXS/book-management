@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1168</width>
-    <height>600</height>
+    <height>425</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -290,48 +290,15 @@
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>还书</string>
+      <string>用户管理</string>
      </attribute>
-     <widget class="QWidget" name="layoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>90</y>
-        <width>221</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_9">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <widget class="QLabel" name="label_11">
-           <property name="text">
-            <string>book id</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="return_bookid"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QPushButton" name="ret">
-         <property name="text">
-          <string>return</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
      <widget class="QWidget" name="layoutWidget_3">
       <property name="geometry">
        <rect>
         <x>301</x>
         <y>10</y>
         <width>781</width>
-        <height>241</height>
+        <height>301</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -349,7 +316,7 @@
             <enum>Qt::LeftToRight</enum>
            </property>
            <property name="text">
-            <string>already borrowed and kept</string>
+            <string>students</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -372,27 +339,141 @@
          </attribute>
          <column>
           <property name="text">
-           <string>Book id</string>
+           <string>stu name</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Book name</string>
+           <string>stu id</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>borrow time</string>
+           <string>stu grade</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>return time</string>
+           <string>password</string>
           </property>
          </column>
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>80</y>
+        <width>261</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_12">
+         <property name="font">
+          <font>
+           <family>Al Tarikh</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>delete student</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_9">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>stu name</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="return_bookid"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="ret">
+           <property name="text">
+            <string>delete</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>借书管理</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>1121</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>140</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>loan id</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>book id</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>book name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>storage</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>price</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>stu name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>borrow time</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>return time</string>
+       </property>
+      </column>
      </widget>
     </widget>
    </widget>
