@@ -75,3 +75,39 @@ void student::on_pushButton_clicked()    // find books
 
 }
 
+
+void student::on_fresh_borrow_clicked()
+{
+    QString sqlString = "select * from loan where stu_name = '" + student_name + "';";
+    QSqlQuery query(database);
+    if (!query.exec(sqlString))
+    {
+        qDebug() << query.lastError();
+    }
+    else
+    {
+        ui->tableWidget_2->clearContents();
+        ui->tableWidget_2->setRowCount(0);
+        while(query.next())
+        {
+            QString book_id = query.value(1).toString();
+            QString book_name = query.value(2).toString();
+            QString borrow_time = query.value(4).toString();
+            QString return_time = query.value(5).toString();
+            int rowIndex = ui->tableWidget_2->rowCount();
+            ui->tableWidget_2->setRowCount(rowIndex+1);
+            QTableWidgetItem *item = new QTableWidgetItem (book_id);
+            ui->tableWidget_2->setItem(rowIndex, 0, item);
+            item = new QTableWidgetItem (book_name);
+            ui->tableWidget_2->setItem(rowIndex, 1, item);
+            item = new QTableWidgetItem (borrow_time);
+            ui->tableWidget_2->setItem(rowIndex, 2, item);
+            item = new QTableWidgetItem (return_time);
+            ui->tableWidget_2->setItem(rowIndex, 3, item);
+            
+        }
+
+
+    }
+    
+}

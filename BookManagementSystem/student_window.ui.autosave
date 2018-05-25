@@ -204,64 +204,6 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>10</y>
-        <width>791</width>
-        <height>261</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_8">
-       <item>
-        <widget class="QLabel" name="label_10">
-         <property name="font">
-          <font>
-           <family>Al Tarikh</family>
-           <pointsize>18</pointsize>
-          </font>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
-         </property>
-         <property name="text">
-          <string>already borrowed and kept</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QTableWidget" name="tableWidget_2">
-         <attribute name="horizontalHeaderDefaultSectionSize">
-          <number>197</number>
-         </attribute>
-         <column>
-          <property name="text">
-           <string>Book id</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Book name</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>borrow time</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>return time</string>
-          </property>
-         </column>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
         <x>40</x>
         <y>90</y>
         <width>221</width>
@@ -288,6 +230,75 @@
          <property name="text">
           <string>return</string>
          </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>301</x>
+        <y>10</y>
+        <width>781</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="label_10">
+           <property name="font">
+            <font>
+             <family>Al Tarikh</family>
+             <pointsize>18</pointsize>
+            </font>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="text">
+            <string>already borrowed and kept</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="fresh_borrow">
+           <property name="text">
+            <string>更新</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tableWidget_2">
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>197</number>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>Book id</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Book name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>borrow time</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>return time</string>
+          </property>
+         </column>
         </widget>
        </item>
       </layout>
@@ -384,6 +395,9 @@
         <layout class="QVBoxLayout" name="verticalLayout_6">
          <item>
           <widget class="QLineEdit" name="read_id">
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
            <property name="readOnly">
             <bool>true</bool>
            </property>
@@ -391,6 +405,9 @@
          </item>
          <item>
           <widget class="QLineEdit" name="read_name">
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
            <property name="readOnly">
             <bool>true</bool>
            </property>

@@ -33,6 +33,8 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_fresh_borrow_clicked();
+    
 private:
     Ui::student_window *ui;
     QSqlDatabase database;

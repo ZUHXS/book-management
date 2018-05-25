@@ -47,13 +47,13 @@ void MainWindow::on_pushButton_clicked()   // 学生登录
            QMessageBox::Cancel);
         return;
     }
-    qDebug() << "select password from student where name = '" + ui->stu_id_text->text() + "';";
+    //qDebug() << "select password from student where name = '" + ui->stu_id_text->text() + "';";
     query.exec("select password from student where name = '" + ui->stu_id_text->text() + "';");
     query.next();
     if (ui->stu_password->text() == query.value(0).toString())
     {
         this->hide();
-        student *stu_window = new student(db);
+        student *stu_window = new student(db, ui->stu_id_text->text());
         stu_window->show();
         return;
     }
