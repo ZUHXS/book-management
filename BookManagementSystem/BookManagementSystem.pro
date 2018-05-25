@@ -35,4 +35,5 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui \
-    student_window.ui
+    student_window.ui \
+    manager.ui
