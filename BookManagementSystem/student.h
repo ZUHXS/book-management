@@ -31,7 +31,13 @@ public:
     ~student();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButton_clicked(int x = 0);   // find books
+
+    void on_fresh_borrow_clicked();
+
+    void on_borrow_clicked();
+
+    void on_ret_clicked();
 
 private:
     Ui::student_window *ui;
