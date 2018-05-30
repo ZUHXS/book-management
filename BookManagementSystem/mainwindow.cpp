@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "manager.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -63,3 +64,32 @@ void MainWindow::on_pushButton_clicked()   // 学生登录
        QMessageBox::Cancel);
 
 }
+
+void MainWindow::on_pushButton_2_clicked()    // 管理员登录
+{
+    if (ui->manager_name->text().isEmpty() || ui->manager_password->text().isEmpty())
+    {
+        QMessageBox::warning(this, tr("injection detected!"),
+           tr("Please input your name and password!"),
+           QMessageBox::Cancel);
+        return;
+    }
+    QSqlQuery query(db);
+    if (ui->stu_id_text->text().indexOf("'") != -1 || ui->stu_password->text().indexOf("'") != -1){   // sql injection
+        QMessageBox::warning(this, tr("injection detected!"),
+           tr("injection detected!\n""Contain ' in input!"),
+           QMessageBox::Cancel);
+        return;
+    }
+    query.exec("select password from admin where name = '" + ui->manager_name->text() + "';");
+    query.next();
+    if(ui->manager_password->text() == query.value(0).toString())
+    {
+        this->hide();
+        qDebug() << "manager";
+        manager *man_window = new manager(0);
+        man_window->show();
+        return;
+    }
+}
+

@@ -5,7 +5,7 @@
 #include <QApplication>
 #include <QDebug>
 #include "student.h"
-
+#include "manager.h"
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QMessageBox>
@@ -33,6 +33,7 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
 
 private:
     Ui::MainWindow *ui;
