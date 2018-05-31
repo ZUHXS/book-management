@@ -87,7 +87,7 @@ void MainWindow::on_pushButton_2_clicked()    // 管理员登录
     {
         this->hide();
         qDebug() << "manager";
-        manager *man_window = new manager(0);
+        manager *man_window = new manager(db, ui->manager_name->text());
         man_window->show();
         return;
     }

@@ -25,7 +25,7 @@ student::~student()
 
 void student::on_pushButton_clicked(int x)    // find books
 {
-    if(ui->find_bookid->text().indexOf("'") != -1 || ui->find_bookname->text().indexOf("'") != -1 || ui->find_press->text().indexOf("'") != -1 || ui->find_press->text().indexOf("'") != -1){
+    if(ui->find_bookid->text().indexOf("'") != -1 || ui->find_bookname->text().indexOf("'") != -1 || ui->find_press->text().indexOf("'") != -1 || ui->find_writer->text().indexOf("'") != -1){
         QMessageBox::warning(this, tr("injection detected!"),
                tr("injection detected!\n""Contain ' in input!"),
                QMessageBox::Cancel);

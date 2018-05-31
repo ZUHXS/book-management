@@ -27,10 +27,19 @@ class manager : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit manager(QWidget *parent);
+    explicit manager(QSqlDatabase db, QString name, QWidget *parent = 0);
     ~manager();
+private slots:
+    void on_add_clicked();
+
+    void on_find_clicked(int x = 0);
+
+    void on_delete_book_clicked();
+
 private:
     Ui::manager_window *ui;
+    QSqlDatabase database;
+    QString manager_name;
 };
 
 #endif // MANAGER_H

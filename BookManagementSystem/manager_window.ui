@@ -223,10 +223,10 @@
             <widget class="QLineEdit" name="find_press"/>
            </item>
            <item>
-            <widget class="QLineEdit" name="find_press_2"/>
+            <widget class="QLineEdit" name="find_price"/>
            </item>
            <item>
-            <widget class="QLineEdit" name="find_press_3"/>
+            <widget class="QLineEdit" name="find_storage"/>
            </item>
           </layout>
          </item>
@@ -235,14 +235,14 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="find">
            <property name="text">
             <string>find</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="add">
            <property name="text">
             <string>add</string>
            </property>
@@ -276,10 +276,10 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="find_press_4"/>
+        <widget class="QLineEdit" name="delete_book_id"/>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="delete_book">
          <property name="text">
           <string>delete</string>
          </property>
