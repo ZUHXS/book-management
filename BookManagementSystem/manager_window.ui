@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -323,17 +323,10 @@
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QPushButton" name="fresh_borrow">
-           <property name="text">
-            <string>更新</string>
-           </property>
-          </widget>
-         </item>
         </layout>
        </item>
        <item>
-        <widget class="QTableWidget" name="tableWidget_2">
+        <widget class="QTableWidget" name="student_table">
          <attribute name="horizontalHeaderDefaultSectionSize">
           <number>197</number>
          </attribute>
@@ -402,12 +395,12 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="return_bookid"/>
+            <widget class="QLineEdit" name="delete_stu_name"/>
            </item>
           </layout>
          </item>
          <item>
-          <widget class="QPushButton" name="ret">
+          <widget class="QPushButton" name="delete_stu">
            <property name="text">
             <string>delete</string>
            </property>
@@ -422,13 +415,13 @@
      <attribute name="title">
       <string>借书管理</string>
      </attribute>
-     <widget class="QTableWidget" name="tableWidget_3">
+     <widget class="QTableWidget" name="loan_table">
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>10</y>
+        <y>50</y>
         <width>1121</width>
-        <height>321</height>
+        <height>281</height>
        </rect>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
@@ -474,6 +467,24 @@
         <string>return time</string>
        </property>
       </column>
+     </widget>
+     <widget class="QCheckBox" name="if_only_unreturn">
+      <property name="geometry">
+       <rect>
+        <x>1000</x>
+        <y>10</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>只查看未还记录</string>
+      </property>
      </widget>
     </widget>
    </widget>

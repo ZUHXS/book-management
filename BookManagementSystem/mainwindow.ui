@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -33,9 +33,9 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>30</x>
         <y>20</y>
-        <width>251</width>
+        <width>291</width>
         <height>111</height>
        </rect>
       </property>
@@ -47,7 +47,7 @@
            <item>
             <widget class="QLabel" name="label_2">
              <property name="text">
-              <string>学生id</string>
+              <string>姓名</string>
              </property>
             </widget>
            </item>

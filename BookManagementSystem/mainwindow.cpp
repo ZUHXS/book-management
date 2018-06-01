@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("book management system");
     db = QSqlDatabase::addDatabase("QSQLITE");
 
     db.setHostName("127.0.0.1");    //数据库主机名
@@ -87,9 +88,46 @@ void MainWindow::on_pushButton_2_clicked()    // 管理员登录
     {
         this->hide();
         qDebug() << "manager";
-        manager *man_window = new manager(db, ui->manager_name->text());
+        manager *man_window = new manager(db, ui->manager_name->text(), this);
         man_window->show();
         return;
     }
 }
 
+
+void MainWindow::on_reg_clicked()   // 注册
+{
+    if (ui->reg_name->text().isEmpty() || ui->reg_id->text().isEmpty() || ui->reg_grade->text().isEmpty() || ui->reg_password->text().isEmpty() || ui->reg_password_rep->text().isEmpty())
+    {
+        QMessageBox::warning(this, tr("injection detected!"),
+           tr("Please input all the blanks!"),
+           QMessageBox::Cancel);
+        return;
+    }
+    if (ui->reg_name->text().indexOf("'") != -1 || ui->reg_id->text().indexOf("'") != -1 || ui->reg_password->text().indexOf("'") != -1 || ui->reg_password_rep->text().indexOf("'") != -1 || ui->reg_grade->text().indexOf("'") != -1){   // sql injection
+        QMessageBox::warning(this, tr("injection detected!"),
+           tr("injection detected!\n""Contain ' in input!"),
+           QMessageBox::Cancel);
+        return;
+    }
+    if (ui->reg_password->text() != ui->reg_password_rep->text());
+    QString sqlString;
+    sqlString = "insert into student values('" + ui->reg_name->text() + "', '" + ui->reg_id->text() + "', " + ui->reg_grade->text() + ", '" + ui->reg_password->text() + "');";
+    QSqlQuery query(db);
+    if (!query.exec(sqlString))
+    {
+        qDebug() << query.lastError();
+        QString error = query.lastError().text();
+        QByteArray errorx = error.toLatin1();
+        QMessageBox::warning(this, tr("Error!"),
+               tr(errorx.data()),
+               QMessageBox::Cancel);
+        return;
+    }
+    else{
+        QMessageBox::information(this, tr("Success!"),
+               tr("register successed!"),
+               QMessageBox::Cancel);
+        return;
+    }
+}

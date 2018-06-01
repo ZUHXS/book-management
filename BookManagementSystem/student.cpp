@@ -1,12 +1,14 @@
 #include "student.h"
 
-student::student(QSqlDatabase db, QString name, QWidget *parent) :
+student::student(QSqlDatabase db, QString name, QMainWindow *parent) :
     QMainWindow(parent),
     ui(new Ui::student_window),
     database(db),
     student_name(name)
 {
     ui->setupUi(this);
+    stu_parent = parent;
+    this->setWindowTitle("Student");
     ui->read_name->setText(name);
     QSqlQuery query(database);
     query.exec("select id from student where name = '" + student_name + "';");
@@ -118,7 +120,7 @@ void student::on_fresh_borrow_clicked()
 
 void student::on_borrow_clicked()
 {
-    QString sqlString = "select count(load_id) from loan";
+    QString sqlString = "select max(load_id) from loan;";
     QSqlQuery query(database);
     int loan_number;
     if (!query.exec(sqlString))
@@ -159,10 +161,11 @@ void student::on_borrow_clicked()
         }
     }
 
+    // first get the book name and the storage
 
-
-    sqlString = "select book_name from book where book_id = '" + ui->borrow_bookid->text() + "';";
+    sqlString = "select book_name, storage from book where book_id = '" + ui->borrow_bookid->text() + "';";
     QString book_name;
+    int cur_storage;
     query.exec(sqlString);
     if (!query.next()){
         QString error = query.lastError().text();
@@ -175,7 +178,34 @@ void student::on_borrow_clicked()
 
     else{
         book_name = query.value(0).toString();
+        cur_storage = query.value(1).toInt();
         qDebug() << book_name;
+        qDebug() << cur_storage;
+    }
+
+    // second check the storage
+
+    if(cur_storage <= 0)
+    {
+        QMessageBox::warning(this, tr("No storage!"),
+               tr("No storage now! Borrow later!"),
+               QMessageBox::Cancel);
+        return;
+    }
+
+    cur_storage -= 1;
+    // second, update the store
+
+    sqlString = "update book set storage = " + QString::number(cur_storage) + " where book_id = '" + ui->borrow_bookid->text() + "';";
+
+    if(!query.exec(sqlString))
+    {
+        QString error = query.lastError().text();
+        QByteArray errorx = error.toLatin1();
+        QMessageBox::warning(this, tr("Book not found!"),
+               tr(errorx.data()),
+               QMessageBox::Cancel);
+        return;
     }
 
     QDateTime timestamp = QDateTime::currentDateTime();
@@ -185,8 +215,20 @@ void student::on_borrow_clicked()
     sqlString = "insert into loan values('" + QString::number(loan_number+1) + "', '" +
             ui->borrow_bookid->text() + "', '" + book_name + "', '" + student_name + "', '" + time + "', NULL);";
     qDebug() << sqlString;
-    query.exec(sqlString);
+    qDebug() << sqlString;
+
+    if(!query.exec(sqlString))
+    {
+        QString error = query.lastError().text();
+        QByteArray errorx = error.toLatin1();
+        QMessageBox::warning(this, tr("Book not found!"),
+               tr(errorx.data()),
+               QMessageBox::Cancel);
+        return;
+    }
+
     this->on_fresh_borrow_clicked();
+    on_pushButton_clicked(1);   // update storage in book list
 
 }
 
@@ -196,9 +238,36 @@ void student::on_ret_clicked()
     timestamp.addDays(1);
     QString time = timestamp.toString("yyyy-MM-dd hh:mm:ss");
 
+    // first update the loan table
     QString sqlString = "update loan set return_time = '" + time + "' where book_id = '" + ui->return_bookid->text() + "' and stu_name = '" + student_name + "' and return_time is NULL;";
     qDebug() << sqlString;
     QSqlQuery query(database);
-    query.exec(sqlString);
+    if(!query.exec(sqlString))
+    {
+        QString error = query.lastError().text();
+        QByteArray errorx = error.toLatin1();
+        QMessageBox::warning(this, tr("Book not found!"),
+               tr(errorx.data()),
+               QMessageBox::Cancel);
+        return;
+    }
+
+    // then update the storage
+    sqlString = "update book set storage = (select storage from book where book_id = '" + ui->return_bookid->text() + "') + 1 where book_id = '" + ui->return_bookid->text() + "';";
+    if(!query.exec(sqlString))
+    {
+        QString error = query.lastError().text();
+        QByteArray errorx = error.toLatin1();
+        QMessageBox::warning(this, tr("Book not found!"),
+               tr(errorx.data()),
+               QMessageBox::Cancel);
+        return;
+    }
+    this->on_pushButton_clicked(1);
     this->on_fresh_borrow_clicked();
+}
+
+void student::on_pushButton_3_clicked()
+{
+    exit(0);
 }

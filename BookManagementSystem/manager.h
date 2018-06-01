@@ -35,6 +35,12 @@ private slots:
     void on_find_clicked(int x = 0);
 
     void on_delete_book_clicked();
+    void update_student_list();
+
+    void on_delete_stu_clicked();
+    void update_loan_list(int unreturn);  // unreturn = 1, update only unreturned records
+
+    void on_if_only_unreturn_clicked(bool checked);
 
 private:
     Ui::manager_window *ui;
