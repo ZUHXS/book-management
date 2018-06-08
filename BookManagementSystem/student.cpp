@@ -146,7 +146,7 @@ void student::on_borrow_clicked()
     {
         QString error = query.lastError().text();
         QByteArray errorx = error.toLatin1();
-        QMessageBox::warning(this, tr("Book not found!"),
+        QMessageBox::warning(this, tr("Error!"),
                tr(errorx.data()),
                QMessageBox::Cancel);
         return;
@@ -154,7 +154,7 @@ void student::on_borrow_clicked()
     else{
         if (query.next())
         {
-            QMessageBox::warning(this, tr("Book not found!"),
+            QMessageBox::warning(this, tr("Already borrowed"),
                    tr("You have already borrowed this book! Return first!"),
                    QMessageBox::Cancel);
             return;
@@ -170,8 +170,8 @@ void student::on_borrow_clicked()
     if (!query.next()){
         QString error = query.lastError().text();
         QByteArray errorx = error.toLatin1();
-        QMessageBox::warning(this, tr("Book not found!"),
-               tr("Book not Found! Check first!"),
+        QMessageBox::warning(this, tr("Error!"),
+               tr("Error! Check first!"),
                QMessageBox::Cancel);
         return;
     }
@@ -202,7 +202,7 @@ void student::on_borrow_clicked()
     {
         QString error = query.lastError().text();
         QByteArray errorx = error.toLatin1();
-        QMessageBox::warning(this, tr("Book not found!"),
+        QMessageBox::warning(this, tr("Error!"),
                tr(errorx.data()),
                QMessageBox::Cancel);
         return;
@@ -221,7 +221,7 @@ void student::on_borrow_clicked()
     {
         QString error = query.lastError().text();
         QByteArray errorx = error.toLatin1();
-        QMessageBox::warning(this, tr("Book not found!"),
+        QMessageBox::warning(this, tr("Error!"),
                tr(errorx.data()),
                QMessageBox::Cancel);
         return;
@@ -246,7 +246,7 @@ void student::on_ret_clicked()
     {
         QString error = query.lastError().text();
         QByteArray errorx = error.toLatin1();
-        QMessageBox::warning(this, tr("Book not found!"),
+        QMessageBox::warning(this, tr("Error!"),
                tr(errorx.data()),
                QMessageBox::Cancel);
         return;
@@ -258,7 +258,7 @@ void student::on_ret_clicked()
     {
         QString error = query.lastError().text();
         QByteArray errorx = error.toLatin1();
-        QMessageBox::warning(this, tr("Book not found!"),
+        QMessageBox::warning(this, tr("Error!"),
                tr(errorx.data()),
                QMessageBox::Cancel);
         return;
